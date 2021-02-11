@@ -1,4 +1,50 @@
-  const header = document.querySelector("header h1");
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        #liste {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-gap: 1em;
+            margin: 2em;
+        }
+
+        .person {
+            padding: 1em;
+            border: 1px solid;
+            border-radius: 1em;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <section id="liste"></section>
+
+    <template>
+        <article class="person">
+            <h2 class="navn"></h2>
+            <p class="køn"></p>
+            <img src="" alt="" class="profil-billede">
+        </article>
+    </template>
+
+
+    <script>
+        const header = document.querySelector("header h1");
         const medieurl = "https://persongalleri-5d3e.restdb.io/media/";
         const myHeaders = {
 
@@ -28,14 +74,18 @@
 
             const dest = document.querySelector("#liste"); // container til articles med en person
             const skabelon = document.querySelector("template").content; // select indhold af html skabelon (article)
+            console.log(skabelon); 
 
             personer.forEach(person => {
 
                 // loop igennem json (personer)
                 const klon = skabelon.cloneNode(true);
+                console.log(klon);
                 klon.querySelector(".navn").textContent = person.fornavn + " " + person.efternavn;
                 klon.querySelector(".profil-billede").src = medieurl + person.billede;
                 dest.appendChild(klon);
 
             })
         }
+    </script>
+</body></html>

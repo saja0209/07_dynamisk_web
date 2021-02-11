@@ -1,0 +1,1 @@
+Problemet er at den kun kloner navnet ved clone.node(true), som om den ikke ved at det er en array. 
